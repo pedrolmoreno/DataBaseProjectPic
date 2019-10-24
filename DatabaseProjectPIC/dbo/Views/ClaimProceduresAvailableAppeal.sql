@@ -1,0 +1,29 @@
+﻿
+
+
+
+
+
+
+
+
+
+
+
+CREATE VIEW [dbo].[ClaimProceduresAvailableAppeal]
+AS
+SELECT        TOP (100) PERCENT CLM.CLAIM_ID AS ClaimID, CLM.PROVIDER_ID AS ProviderId, CLM.PAT_ID AS PatientId, CLM.LOCSVC_ID AS LocationId, LINE.DATE_PROCESSED AS ProcessDate, 
+                         MIN(DTL.PROCESS_DATE) AS [Check Run], LINE.LINE, LINE.PROCEDURE_CODE AS [Procedure], LINE.LINE_CHARGE_AMOUNT AS Amount, '' AS Status, '(' + EXPC.Code +') ' + EXPC.Description AS Exception,
+						 LINE.SERVICE_FROM_DATE as DOS, EXPC.code as ExceptionCode, Min(CHECK_RUN_ID) as CheckRunId
+FROM            dbo.HCFA_CLAIM AS CLM WITH (NOLOCK) RIGHT OUTER JOIN
+                         dbo.HCFA_LINE AS LINE ON CLM.CLAIM_ID = LINE.CLAIM_ID LEFT OUTER JOIN
+                         dbo.CLM_PMNT_DTL AS DTL ON DTL.CLAIM_ID = LINE.CLAIM_ID AND DTL.CLMSVC_LINE = LINE.LINE LEFT OUTER JOIN
+                         dbo.ACTCODE AS EXPC ON EXPC.Code = LINE.EXCEPTION_CODE_01 
+						 --LEFT OUTER JOIN  dbo.DenialCodes AS DLD ON DLD.Code = LINE.EXCEPTION_CODE_01
+WHERE        (LINE.LINE_STATUS = 'C') AND (Expc.Code IS NOT NULL) AND LINE.AMOUNT_PAID = 0
+GROUP BY CLM.CLAIM_ID, CLM.PROVIDER_ID, CLM.PAT_ID, CLM.LOCSVC_ID, LINE.LINE, LINE.DATE_PROCESSED, LINE.PROCEDURE_CODE, LINE.LINE_CHARGE_AMOUNT, LINE.LINE_STATUS, EXPC.Description, 
+                         CLM.PAT_ID,
+						 --DLD.Code, 
+						 EXPC.Code,
+						 LINE.SERVICE_FROM_DATE
+ORDER BY ClaimID DESC, 'Line'

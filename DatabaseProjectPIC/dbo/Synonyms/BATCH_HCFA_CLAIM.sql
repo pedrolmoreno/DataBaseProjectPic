@@ -1,0 +1,2 @@
+﻿CREATE SYNONYM [dbo].[BATCH_HCFA_CLAIM] FOR [thesys].[dbo].[BATCH_HCFA_CLAIM];
+

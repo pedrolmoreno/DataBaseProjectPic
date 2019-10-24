@@ -1,0 +1,2 @@
+﻿CREATE USER [picservice] WITHOUT LOGIN;
+

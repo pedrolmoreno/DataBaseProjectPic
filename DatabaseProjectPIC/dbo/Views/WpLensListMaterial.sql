@@ -1,0 +1,4 @@
+﻿CREATE VIEW [dbo].[WpLensListMaterial]
+AS
+SELECT     dbo.WP_LENSLIST_MATERIALS.*
+FROM         dbo.WP_LENSLIST_MATERIALS

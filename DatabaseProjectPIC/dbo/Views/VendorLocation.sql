@@ -1,0 +1,9 @@
+﻿
+
+CREATE VIEW [dbo].[VendorLocation]
+AS
+SELECT DISTINCT V.ID, '[' + CAST(VN.ID AS VARCHAR(12)) + '] ' + VN.Name + ' - ' + VN.Street1 AS Name
+FROM            dbo.VENDOR AS V INNER JOIN
+                         dbo.LOCSVC_ID AS LS ON V.TAX_ID = LS.VALUE AND LS.CODE = 'LTID' AND GETDATE() BETWEEN LS.EFF_DATE AND LS.EXP_DATE INNER JOIN
+                         dbo.LOCSVC_ID AS LOB ON LOB.CODE = 'LOB' AND LS.LOCSVC_ID = LOB.LOCSVC_ID AND GETDATE() BETWEEN LOB.EFF_DATE AND LOB.EXP_DATE INNER JOIN
+                         dbo.LOCSVC AS VN ON VN.ID = V.ID

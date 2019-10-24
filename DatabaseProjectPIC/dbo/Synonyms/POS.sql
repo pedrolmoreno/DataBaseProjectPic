@@ -1,0 +1,2 @@
+﻿CREATE SYNONYM [dbo].[POS] FOR [THESYS].[dbo].[POS];
+

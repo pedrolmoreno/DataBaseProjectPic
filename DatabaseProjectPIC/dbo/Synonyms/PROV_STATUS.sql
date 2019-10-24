@@ -1,0 +1,2 @@
+﻿CREATE SYNONYM [dbo].[PROV_STATUS] FOR [thesys].[dbo].[PROV_STATUS];
+

@@ -1,0 +1,2 @@
+﻿CREATE SYNONYM [dbo].[MAINT_REASON_PCP] FOR [TheSys].[dbo].[MAINT_REASON_PCP];
+

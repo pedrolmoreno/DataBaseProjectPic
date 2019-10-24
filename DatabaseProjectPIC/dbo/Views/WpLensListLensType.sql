@@ -1,0 +1,4 @@
+﻿CREATE VIEW [dbo].[WpLensListLensType]
+AS
+SELECT     ID, DISPLAY, PARENT, ACTIVE
+FROM         dbo.WP_LENSLIST_LENSTYPE

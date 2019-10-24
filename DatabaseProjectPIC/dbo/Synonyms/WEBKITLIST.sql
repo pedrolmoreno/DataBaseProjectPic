@@ -1,0 +1,2 @@
+﻿CREATE SYNONYM [dbo].[WEBKITLIST] FOR [thesys].[dbo].[WEB_KIT_LIST];
+

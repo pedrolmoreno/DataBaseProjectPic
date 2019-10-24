@@ -1,0 +1,2 @@
+﻿CREATE SYNONYM [dbo].[PAYORS_GROUP] FOR [thesys].[dbo].[PAYOR_GROUP];
+
