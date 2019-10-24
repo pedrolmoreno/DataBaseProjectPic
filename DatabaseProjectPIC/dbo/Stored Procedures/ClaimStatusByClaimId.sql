@@ -35,6 +35,8 @@ declare @dos			datetime
 declare @check_num		int
 declare @cr_id			int
 declare @check_date	        datetime
+
+declare @NewVar	        datetime
  
 
  
