@@ -1,4 +1,4 @@
-﻿Create PROCEDURE [dbo].[ClaimStatusByClaimId](
+﻿CREATE PROCEDURE [dbo].[ClaimStatusByClaimId](
 	        @CLAIM_ID			INT,
 			@sub_id_passed		varchar(50))
 
@@ -38,7 +38,7 @@ declare @check_date	        datetime
 
 declare @NewVar	        datetime
  
-
+declare @NewVar2	        datetime
  
  
 DECLARE @RETURN_TABLE TABLE(
